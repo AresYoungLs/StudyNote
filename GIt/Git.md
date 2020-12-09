@@ -1,0 +1,85 @@
+# Git 命令
+
+## 基础命令
+
+#### git commit
+
+- 效果 Git 提交当前本地仓库代码
+
+### git add .
+
+- 提交当前的文件到临时仓库
+
+### git checkout -b [branchName]
+
+- Git 创建并且切换到分支
+
+### git checkout [branchName]
+
+- Git 切换分支
+
+### git merge [branchName]
+
+- 将[branchName]分支内容合并到当前所在分支
+
+### git rebase [branchName]
+
+- 将当前的分支的工作“复制”到所选[branchName]分支上
+
+> Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。
+
+> Rebase 的优势就是可以创造更线性的提交历史，如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。
+
+> 移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。
+
+> 原本的 branchName 分支上的提交记录<font color="#error">依然存在</font> ，而当前分支的提交是我们 <font color="#error">Rebase</font> 到 <font color="#error">master</font> 分支上的 <font color="#error">提交记录的副本</font> 、
+
+---
+
+## 高级命令
+
+### HEAD概述
+
+
+### git show HEAD
+- 查看当前的HEAD的父母的消息
+- `^` 查看上一个
+- `~[num]` 查看上`num`个的父母的消息
+
+### git checkout [commitName]
+
+- 分离 Head
+- 将 Head 指向具体的提交而并非是一个分支
+
+> HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。
+
+> HEAD 总是指向当前分支上最近一次提交记录。大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。
+
+> HEAD 通常情况下是指向分支名的（如 bugFix）。在你提交时，改变了 bugFix 的状态，这一变化通过 HEAD 变得可见。
+
+> 如果想看 HEAD 指向，可以通过 `cat .git/HEAD` 查看， 如果 HEAD 指向的是一个引用，还可以用 `git symbolic-ref HEAD` 查看它的指向。但是该程序不支持这两个命令）
+
+> 分离的 HEAD 就是让其指向了某个具体的提交记录而不是分支
+
+### git checkout HEAD^ / git checkout HEAD~3 / git checkout j25g24v3.....
+
+- Head 相对引用
+- `git checkout HEAD^` 将当前的 HEAD 指向向上移动 1 个位置，让 HEAD 指向上一个提交记录
+- `git checkout HEAD~3`将当前的 HEAD 指向向上移动(一次后退)3 个位置，让 HEAD 指向从<font color="#error">上一个计数为 1</font>的第 3 个提交记录
+- `git checkout j25g24v3.....`将当前的 HEAD 强制指向<font color="#error">j25g24v3.....</font>提交记录
+  
+> `git log` 来查查看提交记录的哈希值
+
+> Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录的前几个字符即可。因此我可以仅输入 fed2.... 而不是一长串字符
+
+### git branch -f [branchName] HEAD~3 / git branch -f [branchName] c5qe8qd1.....
+
+- `git branch -f [branchName] HEAD~3`
+  - 将[branchName]分支强制指向 <font color="#error">当前 HEAD 位置向上 3 个</font> 的提交记录
+- `git branch -f [branchName] c5qe8qd1.....`将[branchName]分支强制指向 <font color="#error">c5qe8qd1...</font> 的提交记录
+
+### git reset HEAD^ / git revert HEAD
+
+- `git reset HEAD^`
+  - 将当前所在的分支指向 HEAD 的上一个提交记录（c1），但是远程仓库的分支指向仍然是未移动之前的记录(c2)，对于本地仓库而言，c2 如同没有提交过一样，在 `reset` 后， C2 所做的变更还在，但是处于未加入暂存区状态；但是对于远程仓库而言，是无效的
+- `git revert HEAD` 将当前所在的分支从 `HEAD` <font color="#error">当前所指向的分支的提交记录的上一份提交记录</font>复制一份过来,变成一个新的提交，但是本次提交其实是和`revert`前的上一份提交记录保持一致的，也就是说这一次操作其实是用来撤销最后一次的提交的
