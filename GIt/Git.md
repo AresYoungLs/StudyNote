@@ -4,7 +4,7 @@
 
 #### git commit
 
-- 效果 Git 提交当前本地仓库代码
+- Git 提交当前本地仓库代码
 
 ### git add .
 
@@ -40,7 +40,6 @@
 
 ### HEAD概述
 
-
 ### git show HEAD
 - 查看当前的HEAD的父母的消息
 - `^` 查看上一个
@@ -65,22 +64,41 @@
 
 - Head 相对引用
 - `git checkout HEAD^` 将当前的 HEAD 指向向上移动 1 个位置，让 HEAD 指向上一个提交记录
-- `git checkout HEAD~3`将当前的 HEAD 指向向上移动(一次后退)3 个位置，让 HEAD 指向从<font color="#error">上一个计数为 1</font>的第 3 个提交记录
+- `git checkout HEAD~3`将当前的 HEAD 指向向上移动(一次后退)3 个位置，让 HEAD 指向从当前的指向<font color="#error">向上移动3次</font>提交记录
 - `git checkout j25g24v3.....`将当前的 HEAD 强制指向<font color="#error">j25g24v3.....</font>提交记录
   
 > `git log` 来查查看提交记录的哈希值
 
 > Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录的前几个字符即可。因此我可以仅输入 fed2.... 而不是一长串字符
 
-### git branch -f [branchName] HEAD~3 / git branch -f [branchName] c5qe8qd1.....
+### git branch -f [branchName] HEAD~3 / git branch -f [branchName] c5qe8qd1..... /  git branch -f [branchName] [branchName2]
 
 - `git branch -f [branchName] HEAD~3`
   - 将[branchName]分支强制指向 <font color="#error">当前 HEAD 位置向上 3 个</font> 的提交记录
 - `git branch -f [branchName] c5qe8qd1.....`将[branchName]分支强制指向 <font color="#error">c5qe8qd1...</font> 的提交记录
-
+- `git branch -f [branchName] [branchName2]`将[branchName]分支强制指向 <font color="#error">[branchName2]</font> 的指向位置
 ### git reset HEAD^ / git revert HEAD
 
 - `git reset HEAD^`
   - 将当前所在的分支指向 HEAD 的上一个提交记录（c1），但是远程仓库的分支指向仍然是未移动之前的记录(c2)，对于本地仓库而言，c2 如同没有提交过一样，在 `reset` 后， C2 所做的变更还在，但是处于未加入暂存区状态；但是对于远程仓库而言，是无效的
 - `git revert HEAD` 
     - 将当前所在的分支从 `HEAD` <font color="#error">当前所指向的分支的提交记录的上一份提交记录</font>复制一份过来,变成一个新的提交，但是本次提交其实是和`revert`前的上一份提交记录保持一致的，也就是说这一次操作其实是用来撤销最后一次的提交的
+
+---
+## 移动提交记录（整理提交记录）
+### Git Cherry-pick  cada1... caada2... daag3...
+- 将<font color="#error">一些</font>提交复制到当前所在的位置（HEAD）下面
+
+### git rebase -i HEAD~4
+- `交互式 rebase` 选取当前位置向前num个提交记录进行后续操作
+- `交互式 rebase` 指的是使用带参数 --interactive 的 rebase 命令, 简写为 -i
+- 如果你在命令后增加了这个选项, Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。在实际使用时，所谓的 UI 窗口一般会在文本编辑器 —— 如 Vim —— 中打开一个文件。
+- 当 rebase UI界面打开时, 你能做3件事: 
+  1. 调整提交记录的顺序（通过鼠标拖放来完成）
+  2. 删除你不想要的提交（通过切换 pick 的状态来完成，关闭就意味着你不想要这个提交记录）
+  3. 合并提交，它允许你把多个提交记录合并成一个。
+---
+## 杂项
+### 只取一个提交记录/本地栈式提交
+---
+## 高级话题
