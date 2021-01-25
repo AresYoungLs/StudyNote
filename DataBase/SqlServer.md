@@ -23,3 +23,6 @@
 - SET IDENTITY_INSERT tablename Off
 
 ---
+
+### 从一个表中查询数据插入另一个表中
+select ... into
