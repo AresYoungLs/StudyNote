@@ -32,8 +32,8 @@
 
 > 原本的 branchName 分支上的提交记录<font color="#error">依然存在</font> ，而当前分支的提交是我们 <font color="#error">Rebase</font> 到 <font color="#error">master</font> 分支上的 <font color="#error">提交记录的副本</font> 、
 ### 查看git用户名和邮箱地址命令：
-- git configuser.name
-- git configuser.email
+- git config user.name
+- git config user.email
 #### 修改用户名和邮箱地址：
 - git config--global user.name "username"
 - git config--global user.email "email"
