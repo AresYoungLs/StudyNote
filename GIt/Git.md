@@ -31,6 +31,13 @@
 > 移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。
 
 > 原本的 branchName 分支上的提交记录<font color="#error">依然存在</font> ，而当前分支的提交是我们 <font color="#error">Rebase</font> 到 <font color="#error">master</font> 分支上的 <font color="#error">提交记录的副本</font> 、
+### 查看git用户名和邮箱地址命令：
+- git configuser.name
+- git configuser.email
+#### 修改用户名和邮箱地址：
+- git config--global user.name "username"
+- git config--global user.email "email"
+- 当git注册时的邮箱发生变化后，可以通过config命令进行修改。
 
 ---
 
@@ -83,6 +90,9 @@
     - 将当前所在的分支从 `HEAD` <font color="#error">当前所指向的分支的提交记录的上一份提交记录</font>复制一份过来,变成一个新的提交，但是本次提交其实是和`revert`前的上一份提交记录保持一致的，也就是说这一次操作其实是用来撤销最后一次的提交的
 ### git pull --allow-unrelated-histories
 > 在本地项目提交为git项目的时候，做好git创建的时候，pull会失败，因为本地和远程的关系未建立，先允许拉取历史记录
+
+### git merge master --allow-unrelated-histories
+> 合并无关历史
 ---
 ## 移动提交记录（整理提交记录）
 ### Git Cherry-pick  cada1... caada2... daag3...
@@ -96,6 +106,7 @@
   1. 调整提交记录的顺序（通过鼠标拖放来完成）
   2. 删除你不想要的提交（通过切换 pick 的状态来完成，关闭就意味着你不想要这个提交记录）
   3. 合并提交，它允许你把多个提交记录合并成一个。
+  
 ---
 ## 杂项
 ### 只取一个提交记录/本地栈式提交
