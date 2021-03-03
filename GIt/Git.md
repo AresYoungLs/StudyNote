@@ -35,8 +35,8 @@
 - git config user.name
 - git config user.email
 #### 修改用户名和邮箱地址：
-- git config--global user.name "username"
-- git config--global user.email "email"
+- git config --global user.name "username"
+- git config --global user.email "email"
 - 当git注册时的邮箱发生变化后，可以通过config命令进行修改。
 
 ---
