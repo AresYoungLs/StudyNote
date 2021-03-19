@@ -30,7 +30,7 @@
 
 > 移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。
 
-> 原本的 branchName 分支上的提交记录<font color="#error">依然存在</font> ，而当前分支的提交是我们 <font color="#error">Rebase</font> 到 <font color="#error">master</font> 分支上的 <font color="#error">提交记录的副本</font> 、
+> 原本的 branchName 分支上的提交记录<font color="#error">依然存在</font> ，而当前分支的提交是我们 <font color="#error">Rebase</font> 到 <font color="#error">master</font> 分支上的 <font color="#error">提交记录的副本</font> 
 ### 查看git用户名和邮箱地址命令：
 - git config user.name
 - git config user.email
