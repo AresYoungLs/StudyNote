@@ -1,30 +1,30 @@
 # SqlServer 数据库常用命令
 
-### 删除原表数据,并重置自增列
+## 删除原表数据,并重置自增列
 
-- truncate table **tableName** 
+- truncate table **tableName**
 
 ---
 
-### 重置表的自增字段,保留数据 （重置自增序列从某个值开始）
+## 重置表的自增字段,保留数据 （重置自增序列从某个值开始）
 
 - DBCC CHECKIDENT (**tableName**,reseed,0)
 
 ---
 
-### 设置允许显式插入自增列
+## 设置允许显式插入自增列
 
 - SET IDENTITY_INSERT **tableName** ON
 
 ---
 
-### 当然插入完毕记得要设置不允许显式插入自增列
+## 当然插入完毕记得要设置不允许显式插入自增列
 
 - SET IDENTITY_INSERT **tableName** Off
 
 ---
 
-### 从一个表中查询数据插入另一个表中
+## 从一个表中查询数据插入另一个表中
 
 <font color="#error">只适用于创建新表的插入（Mysql不支持）</font> <br>
 <font color="#error">此语句只能创建现有的准备插入的数据列的表结构</font> <br>
