@@ -1,3 +1,5 @@
+# 在CentOS7上安装gitlab
+
 GitLab 版本不同，命令会有所不同（网上说的而基本都是gitlab-rails console production ），推荐大家直接上 GitLab 官网去找对应版本的命令
 我测是使用gitlab-rails console production是进不去GitLab 控制台的
 gitlab-rails dbconcole
@@ -8,6 +10,7 @@ user.password = '39upyoung'
 user.password_confirmation = '39upyoung'
 
 ## Gitlab给分支设定权限
+
  发表于 2018-06-06 |  分类于 工作与技术 |  热度: ℃
  字数统计: 321 |  阅读时长 ≈ 1
 这几天边吃瓜边关注崔永元和冯小刚、刘震云的爱恨情仇

@@ -51,13 +51,13 @@
     - 项目整合时，好操作
 2. 前端模块化实现的几种方式
     - AMD： 通过require.js实现
-    - CMD：通过sea.js来使用，弃更 
+    - CMD：通过sea.js来使用，弃更  
     - Common.js规范
     - es6 模块化
 
 # Node.js的版本
 
-- 官网地址：https://nodejs.org/en/
+- 官网地址：<https://nodejs.org/en/>
 - 版本：两个版本是两个技术团队,本部开发者和社区开发者两个
     1. 长期稳定版 [LTS]  
     2. 最新版 [current]  
