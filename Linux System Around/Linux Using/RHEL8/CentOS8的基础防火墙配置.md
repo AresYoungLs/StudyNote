@@ -1,4 +1,5 @@
 # systemctl
+
 ```shell
 systemctl unmask firewalld                    #执行命令，即可实现取消服务的锁定
 systemctl mask firewalld                    # 下次需要锁定该服务时执行
@@ -15,6 +16,7 @@ systemctl --failed                                     #查看启动失败的服
 ```
 
 # firewall-cmd
+
 ```shell
 firewall-cmd --state                         #查看防火墙状态  
 firewall-cmd --reload                        #更新防火墙规则  
@@ -50,6 +52,7 @@ firewall-cmd --reload    #重启防火墙(修改配置后要重启防火墙)
 ```
 
 # 改用iptables.service
+
 ```shell
 yum install iptables-services           #安装iptables  
 systemctl stop firewalld.service        #停止firewalld  
