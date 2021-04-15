@@ -14,4 +14,4 @@ ISNULL(expr1，expr2)  如果数据为null 则返回expr2，否则返回本身 -
 ### IFNULL(expr1,expr2)
 
 若expr1不为null，则ifnull()的返回值为expr1；若expr1为null，则返回expr2的值<br>
-<font color="#error">sql server 无此函数</font>  
+<span style="color:red;">sql server 无此函数</span>  
