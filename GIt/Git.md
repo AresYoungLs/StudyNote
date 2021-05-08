@@ -106,6 +106,9 @@ git reset --hard 54ef6
 //强制提交使得远程仓库和当前的本地一样
 git push origin HEAD --force
 //不需要回退的情况下进行找回已经回退掉的代码操作
+//查看命令操作的历史
+git reflog
+//回滚掉回滚
 git reset --hard id
 ```
 
@@ -145,5 +148,3 @@ git reset --hard id
 ## 高级话题
 
 ## 版本回退测试记录
-
-无用提交
