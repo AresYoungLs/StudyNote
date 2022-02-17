@@ -62,3 +62,21 @@ systemctl start ip6tables.service       #启动ip6tables
 systemctl enable iptables.service       #设置iptables自启动  
 systemctl enable ip6tables.service      #设置ip6tables自启动
 ```
+
+# iptables配置
+```shell
+ #可以查看出当前的防火墙规则
+ptables -L -n
+#可以查看到每个规则chain  的序列号，只能这样才能删除指定的规则
+iptables -L -n  --line-numbers  
+
+# 删除INPUT的指定序号规则用如下命令。
+iptables -D INPUT 1
+
+# 只允许访问的ip，禁止其他IP访问
+# 执行的命令是有先后顺序的，一定要先禁止端口访问，在允许指定的IP访问。
+sudo iptables -I INPUT -p tcp --dport 22 -j DROP
+sudo iptables -I INPUT -p udp --dport 22 -j DROP
+sudo iptables -I INPUT -p tcp -s 218.75.125.242 --dport 22 -j ACCEPT
+sudo iptables -I INPUT -p udp -s 218.75.125.242 --dport 22 -j ACCEPT
+```
