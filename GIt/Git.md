@@ -143,6 +143,36 @@ git reset --hard id
 
 ### 只取一个提交记录/本地栈式提交
 
+### 统计分支代码
+
+```bash
+git log  chenzhigang  --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+```  
+
+### 统计分支代码（时间：从2021-02-01到2022-02-01）
+
+```bash
+git log  chenzhigang --since=2021-02-01 --until=2022-02-01 --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'  
+```
+
+### 统计某一个作者的代码量（时间段参考上面自加）
+
+```bash
+git log --author="你的Git名称" --pretty=tformat: --numstat -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+```
+
+### 统计当前项目工程总的代码行数
+
+```bash
+git ls-files | xargs cat | wc -l
+# 下面的git命令单独细分每个文件的代码行数，相当于把上面命令细化：
+git ls-files | xargs wc -l
+# 统计Java代码总行数
+find . "(" -name "*.java" ")" -print | xargs wc -l
+# 统计其他文件行数
+find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -name "*.rss" ")" -print | xargs wc -l
+```
+
 ---
 
 ## 高级话题
