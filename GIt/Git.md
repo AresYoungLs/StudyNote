@@ -146,13 +146,13 @@ git reset --hard id
 ### 统计分支代码
 
 ```bash
-git log  chenzhigang  --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+git log  [branchName]  --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
 ```  
 
 ### 统计分支代码（时间：从2021-02-01到2022-02-01）
 
 ```bash
-git log  chenzhigang --since=2021-02-01 --until=2022-02-01 --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'  
+git log [branchName] --since=2021-02-01 --until=2022-02-01 --pretty=tformat:  --numstat  -- . ":(exclude)*/test/*" ":(exclude)*/mock/*" ":(exclude)*/dal/*" ":(exclude)*/model/*" ":(exclude)*/dto/*" ":(exclude)*/enum/*" ":(exclude)*/enums/*" | grep "\(.java\)$" | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'  
 ```
 
 ### 统计某一个作者的代码量（时间段参考上面自加）
