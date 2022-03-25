@@ -177,4 +177,17 @@ find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -n
 
 ## 高级话题
 
+### 迁移全量代码到新仓库操作步骤
+
+```bash
+在云桌面上操作 
+git clone --mirror 老代码仓库URL
+
+cd xxx.git
+
+git remote add NEW-REMOTE[新仓库别名]  新代码仓库URL
+
+git push NEW-REMOTE[新仓库别名] --mirror
+```
+
 ## 版本回退测试记录
