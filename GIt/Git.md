@@ -257,3 +257,23 @@ ssh-add -D # 删除所有的 ssh key
     IdentityFile C:\Users\255220232621315296\.ssh\tff_rsa
     PreferredAuthentications publickey
 ```
+
+
+#### git在windows中的known_hosts问题
+
+使用git连接之前配置好的公司内部git服务器时遇到无连接权限问题。根据提示发现是服务器切换了内部ip地址，因此需要在known_hosts文件夹中重新设置ip。  
+1.首先进入.ssh文件夹，该目录下共有4个文件，分别为config，id_rsa，id_rsa.pub，known_hosts（如果没有可以手动创建）  
+2.备份删除id_rsa，id_rsa.pub  
+3.在config文件最后一行添加StrictHostKeyChecking no语句  
+4.打开git命令行窗口重建秘钥  
+ssh-keygen -t rsa -C "xxx@xxx.com"  
+5.这时，在known_hosts文件中会发现多了一些数据，然后将新生成的id_rsa.pub内容复制到git网站的SSH KEY中  
+6.在命令行中输入：git remote show origin  
+若输出我们配置的origin信息，表示问题已经解决，接下来便可以通过git命令clone或push仓库数据。  
+
+如果是第一次在window中配置git，可按照以下步骤配置：  
+1.在需要建立关系的文件夹下打开git命令行窗口（在该文件夹下点击鼠标右键）  
+2.初始化git：git init  
+3.配置个人信息：git config --global user.email "xxx@xxx.com"  
+git config --global user.name "xxx"  
+接下来的步骤与上面第4步开始的步骤相同。
