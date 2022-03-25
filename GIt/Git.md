@@ -180,7 +180,6 @@ find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -n
 ### 迁移全量代码到新仓库操作步骤
 
 ```bash
-在云桌面上操作 
 git clone --mirror 老代码仓库URL
 
 cd xxx.git
