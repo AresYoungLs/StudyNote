@@ -189,4 +189,71 @@ git remote add NEW-REMOTE[新仓库别名]  新代码仓库URL
 git push NEW-REMOTE[新仓库别名] --mirror
 ```
 
-## 版本回退测试记录
+### ssh相关操作
+
+> Permission denied（publickey）一般有两种原因。  
+>
+> 1. 客户端与服务端未生成 ssh key  
+> 2. 客户端与服务端的ssh key不匹配  
+
+#### 生成ssh key
+
+```shell
+ssh-keygen -t rsa -C "这里换上你的邮箱"
+# 注意ssh和-keygen之间没有空格
+# 之后需要输入密码等，不管一路回车即可。
+# 默认的就会在C/User/CurrentUser/.ssh/id_rsa下面生成 id_rsa 和 id_rsa.pub两个文件。
+
+# 执行命令后需要进行3次或4次确认：
+# 1. 确认秘钥的保存路径（如果不需要改路径则直接回车）；
+# 2.如果上一步置顶的保存路径下已经有秘钥文件，则需要确认是否覆盖（如果之前的秘钥不再需要则直接回车覆盖，如需要则手动拷贝到其他目录后再覆盖）；
+# 3.创建密码（如果不需要密码则直接回车）；
+# 4.确认密码；
+
+# 创建完成之后需要将[公钥]配置到对应的代码仓库平台
+```
+
+#### Permission denied (publickey)
+
+> 这个错误的意思权限不够,使用config配置文件解决  
+> 查看ssh连接状态  
+> ![查看ssh连接状态.png](./picture/查看ssh连接状态.png)  
+
+```bash
+# 查看ssh连接状态的步骤
+ssh -v git@github.com
+# 检查连接是否成功
+ssh -T git@github.com
+# 若未成功，则继续查看连接状态
+# 如果还是访问不对的文件
+# 需要将指定的密钥文件添加到 ssh 连接队列中去
+ssh-add -K ~/.ssh/Mobro_Chu
+
+# 如果报了一个含有 Could not open a connection to your authentication agent. 的错误，则表示没有 代理权限。增加代理权限即可。
+# 非 windows 系统
+ssh-agent bash 
+# windows 系统
+eval `ssh-agent` 
+
+# 其他命令
+ssh-add -l # 查看 ssh key 队列中有哪些 key
+ssh-add -D # 删除所有的 ssh key
+```
+
+#### 为不同的仓库添加不通的ssh key
+
+> 在当前用户文件夹下的.ssh文件夹中添加config文件，内容如下
+
+```text
+    HOST github.com
+    hostname github.com
+    User ff-github
+    IdentityFile C:\Users\255220232621315296\.ssh\id_rsa
+    PreferredAuthentications publickey
+
+    HOST gitee.com
+    hostname gitee.com
+    User test-ff
+    IdentityFile C:\Users\255220232621315296\.ssh\tff_rsa
+    PreferredAuthentications publickey
+```
