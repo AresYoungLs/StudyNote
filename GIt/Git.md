@@ -258,7 +258,6 @@ ssh-add -D # 删除所有的 ssh key
     PreferredAuthentications publickey
 ```
 
-
 #### git在windows中的known_hosts问题
 
 使用git连接之前配置好的公司内部git服务器时遇到无连接权限问题。根据提示发现是服务器切换了内部ip地址，因此需要在known_hosts文件夹中重新设置ip。  
