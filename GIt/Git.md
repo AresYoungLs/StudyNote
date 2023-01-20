@@ -200,6 +200,14 @@ git push NEW-REMOTE[新仓库别名] --mirror
 
 ```shell
 ssh-keygen -t rsa -C "这里换上你的邮箱"
+ssh-keygen -t rsa -C "Gitee_indefares39_SSH_Key_这里换上你的设备名称"
+ssh-keygen -t rsa -C "Gitee_codedog39_SSH_Key_这里换上你的设备名称"
+ssh-keygen -t rsa -C "Github_indefares39_SSH_Key_这里换上你的设备名称"
+ssh-keygen -t rsa -C "Github_codedog39_SSH_Key_这里换上你的设备名称"
+
+ssh-keygen -t rsa -C "Gitee_codedog39_SSH_Key_MateBookWork"
+ssh-keygen -t rsa -C "Github_codedog39_SSH_Key_MateBookWork"
+
 # 注意ssh和-keygen之间没有空格
 # 之后需要输入密码等，不管一路回车即可。
 # 默认的就会在C/User/CurrentUser/.ssh/id_rsa下面生成 id_rsa 和 id_rsa.pub两个文件。
@@ -243,6 +251,8 @@ ssh-add -D # 删除所有的 ssh key
 #### 为不同的仓库添加不通的ssh key
 
 > 在当前用户文件夹下的.ssh文件夹中添加config文件，内容如下
+>
+> [config示例文件](./Sample%20File/config)
 
 ```text
     HOST github.com
