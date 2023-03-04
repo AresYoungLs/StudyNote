@@ -1,0 +1,17 @@
+<!--
+ * @Description: 
+ * @Author: yangyangSheep
+ * @Date: 2023-01-20 09:51:44
+ * @LastEditors: yangyangSheep
+ * @LastEditTime: 2023-01-20 09:53:08
+-->
+# gitee
+Host gitee.com
+HostName gitee.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/Gitee_fangyang98_SSH_key
+# github
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/Github_indefares39_SSH_key
